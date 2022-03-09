@@ -1,0 +1,46 @@
+.titulo{
+    text-align: center;
+    font-size: 200%;
+    margin-top: 40px;
+    margin-bottom: 15px;
+}
+.categorias{
+    display: block;
+}
+.cate{
+    width: 60%;
+    height: 60px;
+    margin-left: 20%;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    border-radius: 5%;
+    margin-top: 25px;
+    background-color: black;
+    color: white;
+    font-size: x-large;
+    padding-top: 9px;
+}
+.textoSobre{
+    margin: 15px 25px 15px 25px;
+    text-align: center;
+}
+.acordionItem{
+    width: 90%;
+    height: 60px;
+    margin-left: 5%;
+    align-items: center;
+    text-align: center;
+    margin-top: 15px;
+    color: white;
+    font-size: large;
+    padding-top: 9px;
+}
+.acordionText{
+    margin: 15px 25px 15px 25px;
+    text-align: center;
+    
+}
+.carrusel{
+    height: 190px;
+}
