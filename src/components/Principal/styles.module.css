@@ -1,7 +1,91 @@
+body{  
+  font-family: "Neuzeit Office", sans-serif;
+}
+.header{
+  background-color: black;
+  font-family: "Montserrat",sans-serif;
+  padding-top: 5%;
+}
+.noda{
+  color: white;
+  text-align: center;
+}
+.barra{
+  display: block;
+}
+.menuTotal{
+  display:flex;
+  width: 100%;
+}
+.burger{
+  color: white;
+  padding-left: 6px;
+  padding-bottom: 5px;
+}
+.hola{
+  background-color: black;
+  opacity: 95%;
+  margin-top: 24px;
+  width: 150%;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.cosito1{
+  display: inline-block;
+  background-color: transparent;
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+  line-height: 1.6;
+  height: 15px;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  color: #fff;
+  top: 0px;
+  margin-top: 60px;
+}
+
+.link{
+  color: black;
+  display: block;
+  text-decoration: none;
+  width: 80% !important;
+  background-color: transparent;
+  line-height: 3.5em;
+  font-family: "Raleway", sans-serif;
+  font-weight: normal;
+  padding: 0 0 0 10%;
+
+}
+.bug{
+  color: white;
+  margin-left: 88%;
+  padding-bottom: 5px;
+}
+
+
+
+
+
+.carrusel{
+  height: 50%;
+}
+.imagen1{
+  height: 50%;
+}
+.imagen2{
+  height: 50%;
+}
+.letrascarrusel{
+  color: black;
+  font-size: larger;
+}
+
+
 .titulo{
     text-align: center;
     font-size: 200%;
-    margin-top: 40px;
+    margin-top: 250px;
     margin-bottom: 15px;
 }
 .categorias{
@@ -41,6 +125,114 @@
     text-align: center;
     
 }
-.carrusel{
-    height: 190px;
-}
+
+
+
+
+
+.producto {
+    height: 450px;
+    width: 80%;
+    margin-left: 10%;
+    border: 1px rgb(63, 53, 53) solid;
+    margin-top: 35px;
+    box-shadow: 0px 0px 10px rgb(63, 53, 53);
+  }
+  .img {
+    height: 50%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+  }
+  .titulo {
+    margin-left: 10%;
+    margin-right: 20%;
+    margin-top: 20px;
+    font-weight: 3000;
+  }
+  .descripcion {
+    margin-left: 5%;
+    margin-right: 25%;
+    margin-top: 5px;
+  }
+  .juntos {
+    display: flex;
+    margin-bottom: 5px;
+  }
+  .precio {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0px;
+    color: rgb(73, 73, 73);
+  }
+  .button {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 0px;
+    background-color: rgb(39, 37, 37);
+    color: white;
+    height: 55px;
+    box-shadow: 0px 0px 10px rgb(63, 53, 53);
+    border: none;
+  }
+  .selector {
+    width: 60%;
+    margin-left: 10%;
+    margin-top: 10px;
+  }
+  .productoCarrito {
+    height: 350px;
+    width: 80%;
+    margin-left: 10%;
+    border: 1px rgb(63, 53, 53) solid;
+    margin-top: 35px;
+    box-shadow: 0px 0px 10px rgb(63, 53, 53);
+  }
+  .imgCarrito {
+    height: 50%;
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 10px;
+  }
+  .nombreCarrito {
+    margin-left: 10%;
+    margin-right: 20%;
+    margin-top: 20px;
+    font-weight: 3000;
+  }
+  .precioCarrito {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 0px;
+    color: rgb(73, 73, 73);
+  }
+  .botonCarrito {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 0px;
+    background-color: rgb(39, 37, 37);
+    color: white;
+    height: 55px;
+    box-shadow: 0px 0px 10px rgb(63, 53, 53);
+    border: none;
+  }
+  .total {
+    margin-top: 20px;
+    margin-left: 10%;
+    font-size: x-large;
+  }
+  .botonFinalizar {
+    margin-left: 10%;
+    margin-bottom: 0px;
+    background-color: rgb(39, 37, 37);
+    color: white;
+    height: 55px;
+    box-shadow: 0px 0px 10px rgb(63, 53, 53);
+    border: none;
+  }
+  .cosito1 {
+    margin-top: 10px;
+    margin-right: 10px;
+    float: right;
+    font-size: x-large;
+  }
