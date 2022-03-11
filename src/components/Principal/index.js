@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
 import Accordion from 'react-bootstrap/Accordion';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { faBars, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -124,16 +126,24 @@ function Principal() {
                         <Offcanvas.Title>NODA</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body className={styles.barra}>
+                        <div className={styles.itemMenu}>Inicio</div>
+                        <div className={styles.itemMenu}>Categorias</div>
+                        <div className={styles.darleEspacio}>
                         {
-                            menus.map((coso, i) => {
-                                return <div><a className={styles.links} to={coso.dire} key={i}>{coso.name}</a></div>
-                            })
+                           categorias.map((coso, i) => {
+                            return (<div className={styles.itemMenu}><a onClick={()=>{paraVerCateg();setCat(coso);handleClose()}}>{coso}</a></div>);
+                        })
                         }
+                        </div>
+                        <div className={styles.itemMenu}>Sobre Nosotros</div>
+                        <div className={styles.itemMenu}>Preguntas Frecuentes</div>
                     </Offcanvas.Body>
                 </Offcanvas>
                 {<div className={styles.menuTotal}><div className={styles.burger}><a className={styles.cosito1} className={styles.cosito2} ><FontAwesomeIcon icon={faBars} onClick={
                     handleShow} /></a></div>
                 </div>}
+                <div className={styles.bug}><a className={styles.cosito1} onClick={()=>{
+                    handleShow2();paraVerCateg()}}><FontAwesomeIcon icon={faShoppingBag} /></a></div>
             </div>
 
             {/*Todo esto es el lo principal, se muestra o esto o las categorias segun funciones*/}
@@ -234,7 +244,7 @@ function Principal() {
 
             {/*Todo esto es el lo categorias, se muestra o esto o lo principal segun funciones*/}
             {categ ? <div className={{ categ }}>
-            <Dropdown className={styles.selector} >
+                <Dropdown className={styles.selector} >
                     <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" size="lg">
                         {cat}
                     </Dropdown.Toggle>
@@ -245,25 +255,27 @@ function Principal() {
                         })}
                     </Dropdown.Menu>
                 </Dropdown>
-
                 {
                     productos.map((coso, i) => {
                         if (cat == "Todos" || cat == coso.categoria) {
-                            return <div className={styles.producto}>
-                                <img src={coso.img} className={styles.img}></img>
-                                <h4 className={styles.titulo}>{coso.name}</h4>
-                                <p className={styles.descripcion}>Descripción: {coso.descripcion}</p>
-                                <div className={styles.juntos}>
-                                    <p className={styles.precio}>Precio: ${coso.precio}</p>
-                                    <button className={styles.button} onClick={
+                            return <Card style={{ width: '18rem' },{marginLeft:'50%'},{marginTop:'15px'}}>
+                            <Card.Img variant="top" src={coso.img} />
+                            <Card.Body>
+                              <Card.Title>{coso.name}</Card.Title>
+                              <Card.Text>
+                              Descripción: {coso.descripcion}
+                              </Card.Text>
+                              <Card.Text>
+                              Precio: ${coso.precio}
+                              </Card.Text>
+                              <Button variant="primary" onClick={
                                         () => {
                                             setState(state => [...state, coso]);
                                             setPrecio(precio + coso.precio);
                                             setQuiere(quiere => [...quiere, coso.name]);
-                                        }
-
-                                    }>Agregar al Carrito</button></div>
-                            </div>
+                                        }}>Agregar al Carrito</Button>
+                            </Card.Body>
+                          </Card>
                         }
                     })
                 }
@@ -272,33 +284,33 @@ function Principal() {
                         <Offcanvas.Title>Carrito</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                        {
-                            state.map((coso, i) => {
-                                return (<div className={styles.productoCarrito}>
-                                    <div><img src={coso.img} className={styles.imgCarrito}></img></div>
-                                    <div><p className={styles.nombreCarrito}>{coso.name}</p>
-                                        <p className={styles.precioCarrito}>{coso.precio}</p>
-                                        <button onClick={
-                                            () => {
-                                                setState(state.filter((_, j) => i != j));
-                                                setPrecio(precio - coso.precio);
-                                                setQuiere(quiere.filter((_, j) => i != j));
-                                            }
-
-                                        } className={styles.botonCarrito}>Quitar</button>
-
-                                    </div></div>
-                                )
-                            })
+                    {
+                    state.map((coso, i) => {
+                        
+                            return <Card style={{ width: '18rem' },{marginLeft:'50%'},{marginTop:'15px'}}>
+                            <Card.Img variant="top" src={coso.img} />
+                            <Card.Body>
+                              <Card.Title>{coso.name}</Card.Title>
+                              <Card.Text>
+                              Precio: ${coso.precio}
+                              </Card.Text>
+                              <Button variant="primary" onClick={
+                                        () => {
+                                            setState(state.filter((_, j) => i != j));
+                                            setPrecio(precio - coso.precio);
+                                            setQuiere(quiere.filter((_, j) => i != j));
+                                        }}>Quitar</Button>
+                            </Card.Body>
+                          </Card>
                         }
+                    )
+                }
+                        
                         <p className={styles.total}>Total: ${precio}</p>
                         <button onClick={
                             handleShow3} className={styles.botonFinalizar} >Finalizar Compra</button>
                     </Offcanvas.Body>
                 </Offcanvas>
-
-                <div className={styles.bug}><a className={styles.cosito1} onClick={
-                    handleShow2}><FontAwesomeIcon icon={faShoppingBag} /></a></div>
 
                 <Offcanvas show={show3} onHide={handleClose3}>
                     <Offcanvas.Header closeButton>
