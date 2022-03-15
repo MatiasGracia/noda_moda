@@ -7,8 +7,10 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { faBars, faShoppingBag } from '@fortawesome/free-solid-svg-icons'
+import { faBars, faShoppingBag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link, animateScroll as scroll } from "react-scroll";
+
 
 function Principal() {
 
@@ -102,7 +104,7 @@ function Principal() {
             categoria: "Falda"
         },
         {
-            name: "primero",
+            name: "tercero",
             descripcion: "haaaayyyy que bonito bueno no tan bonitodjncde",
             precio: 2300,
             img: require("../../img/imagen3.webp"),
@@ -114,20 +116,27 @@ function Principal() {
             precio: 2300,
             img: require("../../img/imagen2.webp"),
             categoria: "Otros"
+        },
+        {
+            name: "quinto",
+            descripcion: "haafrferfreedjncde",
+            precio: 2300,
+            img: require("../../img/imagen2.webp"),
+            categoria: "Otros"
         }
     ]
     return (
         <>
             {/*Todo esto es el header*/}
             <div className={styles.header}>
-                <h1 className={styles.noda} onClick={paraVerPrin}>NODA</h1>
+                <h1 className={styles.noda} onClick={paraVerPrin} id="inicio">NODA</h1>
                 <Offcanvas show={show} onHide={handleClose} className={styles.todaLaBarra}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>NODA</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body className={styles.barra}>
-                        <div className={styles.itemMenu}>Inicio</div>
-                        <div className={styles.itemMenu}>Categorias</div>
+                        <Link to="inicio"><div className={styles.itemMenu} onClick={()=>{paraVerPrin();handleClose()}}>Inicio</div></Link>
+                        <div className={styles.itemMenu} >Categorias</div>
                         <div className={styles.darleEspacio}>
                             {
                                 categorias.map((coso, i) => {
@@ -135,29 +144,27 @@ function Principal() {
                                 })
                             }
                         </div>
-                        <div className={styles.itemMenu}>Sobre Nosotros</div>
-                        <div className={styles.itemMenu}>Preguntas Frecuentes</div>
+                        <Link to='sobre'><div className={styles.itemMenu} onClick={()=>{paraVerPrin();handleClose()}}>Sobre Nosotros</div></Link>
+                        <Link to="preguntas"><div className={styles.itemMenu} onClick={()=>{paraVerPrin();handleClose()}}>Preguntas Frecuentes</div></Link>
                     </Offcanvas.Body>
                 </Offcanvas>
                 {/* Esto es para el menu grande */}
                 <div className={styles.grande}>
-                    <Button variant="secondary">Inicio</Button>{' '}
-                    <Dropdown  >
-                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" >
+                <Button variant="dark" className={styles.itemGrande} onClick={paraVerPrin} ><Link to="inicio" onClick={paraVerPrin} >Inicio</Link></Button>{' '}
+                    <Dropdown className={styles.itemGrande} >
+                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="dark" className={styles.itemGrande2}>
                             Categorias
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu variant="dark">
                             {categorias.map((coso, i) => {
-                                return <Dropdown.Item size="lg" as="button" onClick={() => setCat(coso)}>{coso}</Dropdown.Item>
+                                return <Dropdown.Item size="lg" as="button" onClick={() => {setCat(coso);paraVerCateg()}}>{coso}</Dropdown.Item>
                             })}
                         </Dropdown.Menu>
                     </Dropdown>
-
-
-                    <Button variant="secondary">Sobre Nosotros</Button>{' '}
-                    <Button variant="secondary">Preguntas Frecuentes</Button>{' '}
-                    <Button variant="secondary" onClick={() => {
+                    <Button variant="dark" className={styles.itemGrande}  onClick={paraVerPrin} ><Link to="sobre" onClick={paraVerPrin}>Sobre Nosotros</Link></Button>{' '}
+                    <Button variant="dark" className={styles.itemGrande} onClick={paraVerPrin} ><Link to="preguntas" onClick={paraVerPrin}>Preguntas Frecuentes</Link></Button>{' '}
+                    <Button variant="dark" className={styles.itemGrande} onClick={() => {
                         handleShow2();paraVerCateg()
                     }}>Carrito</Button>{' '}
 
@@ -215,9 +222,9 @@ function Principal() {
                         return (<div className={styles.cate}><a className={styles.cateName} onClick={() => { paraVerCateg(); setCat(coso) }}>{coso}</a></div>);
                     })}
                 </div>
-                <h2 className={styles.titulo}>Sobre Nosotros</h2>
+                <h2 className={styles.titulo} id="sobre">Sobre Nosotros</h2>
 
-                <p className={styles.textoSobre} id="sobre">Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.
+                <p className={styles.textoSobre} >Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.
 
                     Aunque no posee actualmente fuentes para justificar sus hipótesis, el profesor de filología clásica Richard McClintock asegura que su uso se remonta a los impresores de comienzos del siglo xvi.1​ Su uso en algunos editores de texto muy conocidos en la actualidad ha dado al texto lorem ipsum nueva popularidad.
 
@@ -225,7 +232,7 @@ function Principal() {
                 <h2 className={styles.titulo} >Preguntas Frecuentes</h2>
                 <Accordion>
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header>¿Funciona?</Accordion.Header>
+                        <Accordion.Header >¿Funciona?</Accordion.Header>
                         <Accordion.Body>
                             Si soy re bueno
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -268,8 +275,9 @@ function Principal() {
 
             {/*Todo esto es el lo categorias, se muestra o esto o lo principal segun funciones*/}
             {categ ? <div className={{ categ }}>
-                <Dropdown className={styles.selector} >
-                    <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" size="lg">
+                <Dropdown className={styles.selector} className={styles.barraCateg}>
+                    <h5 className={styles.barraFil}>Filtrar: </h5>
+                    <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" size="lg" >
                         {cat}
                     </Dropdown.Toggle>
 
@@ -279,10 +287,11 @@ function Principal() {
                         })}
                     </Dropdown.Menu>
                 </Dropdown>
+                <div className={styles.cardsGrupo}>
                 {
                     productos.map((coso, i) => {
                         if (cat == "Todos" || cat == coso.categoria) {
-                            return <Card style={{ width: '18rem' }, { marginLeft: '50%' }, { marginTop: '15px' }}>
+                            return <Card style={{ width: '18rem' }, { marginLeft: '50%' }, { marginTop: '15px' }} className={styles.cardGrande}>
                                 <Card.Img variant="top" src={coso.img} />
                                 <Card.Body>
                                     <Card.Title>{coso.name}</Card.Title>
@@ -303,6 +312,7 @@ function Principal() {
                         }
                     })
                 }
+                </div>
                 <Offcanvas show={show2} onHide={handleClose2}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>Carrito</Offcanvas.Title>
@@ -320,9 +330,9 @@ function Principal() {
                                         </Card.Text>
                                         <Button variant="primary" onClick={
                                             () => {
-                                                setState(state.filter((_, j) => i != j));
+                                                setState(state.filter((_, j) => i !== j));
                                                 setPrecio(precio - coso.precio);
-                                                setQuiere(quiere.filter((_, j) => i != j));
+                                                setQuiere(quiere.filter((_, j) => i !== j));
                                             }}>Quitar</Button>
                                     </Card.Body>
                                 </Card>

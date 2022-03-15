@@ -241,6 +241,15 @@ body{
   .grande{
     display: none;
   }
+  .barraCateg{
+    background-color: #6c757d;
+    display: flex;
+  }
+  .barraFil{
+    color: white;
+    margin-top: 11px;
+    margin-left: 40px;
+  }
 
   @media screen and (min-width: 960px) {
     .menuTotal{
@@ -251,6 +260,25 @@ body{
     }
     .grande{
       display: flex;
+      background-color: #212529;
+    }
+    .itemGrande{
+      width: 10%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    .itemGrande2{
+      width: 100%;
+      height: 100%;
+    }
+    .cardsGrupo{
+      display: flex;
+    }
+    .cardGrande{
+      width: 27%;
+      margin-left: 3%;
+      margin-right: 3%;
+      margin-top: 5%;
     }
 }
   
