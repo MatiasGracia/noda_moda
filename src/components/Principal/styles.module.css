@@ -236,4 +236,21 @@ body{
     box-shadow: 0px 0px 10px rgb(63, 53, 53);
     border: none;
   }
+
+
+  .grande{
+    display: none;
+  }
+
+  @media screen and (min-width: 960px) {
+    .menuTotal{
+      display: none;
+    }
+    .bug{
+      display: none;
+    }
+    .grande{
+      display: flex;
+    }
+}
   

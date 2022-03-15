@@ -14,11 +14,11 @@ function Principal() {
 
 
     //Header
-    
+
 
     //Lista de opciones del menu
     const menus = [{ name: "Home", dire: "/" }, { name: "Vestidos", dire: "/categoria" }, { name: "Faldas", dire: "/categoria" }, { name: "Accesorios", dire: "/categoria" }, { name: "Otros", dire: "/categoria" }]
-    
+
     //UseState y funciones para mostrar y ocultar el menu
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -121,7 +121,7 @@ function Principal() {
             {/*Todo esto es el header*/}
             <div className={styles.header}>
                 <h1 className={styles.noda} onClick={paraVerPrin}>NODA</h1>
-                <Offcanvas show={show} onHide={handleClose}>
+                <Offcanvas show={show} onHide={handleClose} className={styles.todaLaBarra}>
                     <Offcanvas.Header closeButton>
                         <Offcanvas.Title>NODA</Offcanvas.Title>
                     </Offcanvas.Header>
@@ -129,66 +129,90 @@ function Principal() {
                         <div className={styles.itemMenu}>Inicio</div>
                         <div className={styles.itemMenu}>Categorias</div>
                         <div className={styles.darleEspacio}>
-                        {
-                           categorias.map((coso, i) => {
-                            return (<div className={styles.itemMenu}><a onClick={()=>{paraVerCateg();setCat(coso);handleClose()}}>{coso}</a></div>);
-                        })
-                        }
+                            {
+                                categorias.map((coso, i) => {
+                                    return (<div className={styles.itemMenu}><a onClick={() => { paraVerCateg(); setCat(coso); handleClose() }}>{coso}</a></div>);
+                                })
+                            }
                         </div>
                         <div className={styles.itemMenu}>Sobre Nosotros</div>
                         <div className={styles.itemMenu}>Preguntas Frecuentes</div>
                     </Offcanvas.Body>
                 </Offcanvas>
+                {/* Esto es para el menu grande */}
+                <div className={styles.grande}>
+                    <Button variant="secondary">Inicio</Button>{' '}
+                    <Dropdown  >
+                        <Dropdown.Toggle id="dropdown-button-dark-example1" variant="secondary" >
+                            Categorias
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu variant="dark">
+                            {categorias.map((coso, i) => {
+                                return <Dropdown.Item size="lg" as="button" onClick={() => setCat(coso)}>{coso}</Dropdown.Item>
+                            })}
+                        </Dropdown.Menu>
+                    </Dropdown>
+
+
+                    <Button variant="secondary">Sobre Nosotros</Button>{' '}
+                    <Button variant="secondary">Preguntas Frecuentes</Button>{' '}
+                    <Button variant="secondary" onClick={() => {
+                        handleShow2();paraVerCateg()
+                    }}>Carrito</Button>{' '}
+
+                </div>
                 {<div className={styles.menuTotal}><div className={styles.burger}><a className={styles.cosito1} className={styles.cosito2} ><FontAwesomeIcon icon={faBars} onClick={
                     handleShow} /></a></div>
                 </div>}
-                <div className={styles.bug}><a className={styles.cosito1} onClick={()=>{
-                    handleShow2();paraVerCateg()}}><FontAwesomeIcon icon={faShoppingBag} /></a></div>
+                <div className={styles.bug}><a className={styles.cosito1} onClick={() => {
+                    handleShow2(); paraVerCateg()
+                }}><FontAwesomeIcon icon={faShoppingBag} /></a></div>
             </div>
 
             {/*Todo esto es el lo principal, se muestra o esto o las categorias segun funciones*/}
             {prin ? <div>
                 <div className={styles.carrusel}>
-                <Carousel fade className={styles.carrusel}>
-        <Carousel.Item interval={5000} >
-            <div className={styles.imagen1}><img className={styles.imagen2}
-            className='d-block w-100'
-            src={require('../../img/imagen.webp')}
-            alt='First Slide'
-            /></div>
-            {/* <Carousel.Caption className={styles.letrascarrusel}>
+                    <Carousel fade className={styles.carrusel}>
+                        <Carousel.Item interval={5000} >
+                            <div className={styles.imagen1}><img className={styles.imagen2}
+                                className='d-block w-100'
+                                src={require('../../img/imagen.webp')}
+                                alt='First Slide'
+                            /></div>
+                            {/* <Carousel.Caption className={styles.letrascarrusel}>
                 <h1>Segundo Coso</h1>
                 <p>Esta es como la descripcion del coso que hay que poner</p>
             </Carousel.Caption> */}
-        </Carousel.Item>
-        <Carousel.Item interval={5000} >
-            <div className={styles.imagen1}><img className={styles.imagen2}
-            className='d-block w-100'
-            src={require('../../img/imagen2.webp')}
-            alt='First Slide'
-            /></div>
-            {/* <Carousel.Caption className={styles.letrascarrusel}>
+                        </Carousel.Item>
+                        <Carousel.Item interval={5000} >
+                            <div className={styles.imagen1}><img className={styles.imagen2}
+                                className='d-block w-100'
+                                src={require('../../img/imagen2.webp')}
+                                alt='First Slide'
+                            /></div>
+                            {/* <Carousel.Caption className={styles.letrascarrusel}>
                 <h1>Tercer Coso</h1>
                 <p>Esta es como la descripcion del coso que hay que poner</p>
             </Carousel.Caption> */}
-        </Carousel.Item>
-        <Carousel.Item interval={5000}>
-            <div  className={styles.imagen1}><img className={styles.imagen2}
-            className='d-block w-100'
-            src={require('../../img/imagen3.webp')}
-            alt='First Slide'
-            /></div>
-            {/* <Carousel.Caption className={styles.letrascarrusel}>
+                        </Carousel.Item>
+                        <Carousel.Item interval={5000}>
+                            <div className={styles.imagen1}><img className={styles.imagen2}
+                                className='d-block w-100'
+                                src={require('../../img/imagen3.webp')}
+                                alt='First Slide'
+                            /></div>
+                            {/* <Carousel.Caption className={styles.letrascarrusel}>
                 <h1>Primer Coso</h1>
                 <p>Esta es como la descripcion del coso que hay que poner</p>
             </Carousel.Caption> */}
-        </Carousel.Item>
-        </Carousel>
+                        </Carousel.Item>
+                    </Carousel>
                 </div>
                 <h2 className={styles.titulo}>Categorias</h2>
                 <div className={styles.categorias} id="productos">
                     {categorias.map((coso, i) => {
-                        return (<div className={styles.cate}><a className={styles.cateName} onClick={()=>{paraVerCateg();setCat(coso)}}>{coso}</a></div>);
+                        return (<div className={styles.cate}><a className={styles.cateName} onClick={() => { paraVerCateg(); setCat(coso) }}>{coso}</a></div>);
                     })}
                 </div>
                 <h2 className={styles.titulo}>Sobre Nosotros</h2>
@@ -258,24 +282,24 @@ function Principal() {
                 {
                     productos.map((coso, i) => {
                         if (cat == "Todos" || cat == coso.categoria) {
-                            return <Card style={{ width: '18rem' },{marginLeft:'50%'},{marginTop:'15px'}}>
-                            <Card.Img variant="top" src={coso.img} />
-                            <Card.Body>
-                              <Card.Title>{coso.name}</Card.Title>
-                              <Card.Text>
-                              Descripción: {coso.descripcion}
-                              </Card.Text>
-                              <Card.Text>
-                              Precio: ${coso.precio}
-                              </Card.Text>
-                              <Button variant="primary" onClick={
+                            return <Card style={{ width: '18rem' }, { marginLeft: '50%' }, { marginTop: '15px' }}>
+                                <Card.Img variant="top" src={coso.img} />
+                                <Card.Body>
+                                    <Card.Title>{coso.name}</Card.Title>
+                                    <Card.Text>
+                                        Descripción: {coso.descripcion}
+                                    </Card.Text>
+                                    <Card.Text>
+                                        Precio: ${coso.precio}
+                                    </Card.Text>
+                                    <Button variant="primary" onClick={
                                         () => {
                                             setState(state => [...state, coso]);
                                             setPrecio(precio + coso.precio);
                                             setQuiere(quiere => [...quiere, coso.name]);
                                         }}>Agregar al Carrito</Button>
-                            </Card.Body>
-                          </Card>
+                                </Card.Body>
+                            </Card>
                         }
                     })
                 }
@@ -284,28 +308,28 @@ function Principal() {
                         <Offcanvas.Title>Carrito</Offcanvas.Title>
                     </Offcanvas.Header>
                     <Offcanvas.Body>
-                    {
-                    state.map((coso, i) => {
-                        
-                            return <Card style={{ width: '18rem' },{marginLeft:'50%'},{marginTop:'15px'}}>
-                            <Card.Img variant="top" src={coso.img} />
-                            <Card.Body>
-                              <Card.Title>{coso.name}</Card.Title>
-                              <Card.Text>
-                              Precio: ${coso.precio}
-                              </Card.Text>
-                              <Button variant="primary" onClick={
-                                        () => {
-                                            setState(state.filter((_, j) => i != j));
-                                            setPrecio(precio - coso.precio);
-                                            setQuiere(quiere.filter((_, j) => i != j));
-                                        }}>Quitar</Button>
-                            </Card.Body>
-                          </Card>
+                        {
+                            state.map((coso, i) => {
+
+                                return <Card style={{ width: '18rem' }, { marginLeft: '50%' }, { marginTop: '15px' }}>
+                                    <Card.Img variant="top" src={coso.img} />
+                                    <Card.Body>
+                                        <Card.Title>{coso.name}</Card.Title>
+                                        <Card.Text>
+                                            Precio: ${coso.precio}
+                                        </Card.Text>
+                                        <Button variant="primary" onClick={
+                                            () => {
+                                                setState(state.filter((_, j) => i != j));
+                                                setPrecio(precio - coso.precio);
+                                                setQuiere(quiere.filter((_, j) => i != j));
+                                            }}>Quitar</Button>
+                                    </Card.Body>
+                                </Card>
+                            }
+                            )
                         }
-                    )
-                }
-                        
+
                         <p className={styles.total}>Total: ${precio}</p>
                         <button onClick={
                             handleShow3} className={styles.botonFinalizar} >Finalizar Compra</button>
@@ -338,7 +362,7 @@ function Principal() {
                                 Finalizar por WhatsApp
                             </button>
                         </form>
-                        
+
 
 
 
@@ -346,7 +370,7 @@ function Principal() {
                     </Offcanvas.Body>
                 </Offcanvas>
 
-                
+
 
             </div> : null}
         </>
