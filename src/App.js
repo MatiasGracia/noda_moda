@@ -11,6 +11,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Principal />}></Route>
+      </Routes>
+      <Routes>
         <Route path="/solomelicrear" element={<Crear />}></Route>
       </Routes>
     </BrowserRouter>
