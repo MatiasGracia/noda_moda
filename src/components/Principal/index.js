@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {app} from '../../fb';
 import styles from './styles.module.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
@@ -14,6 +15,12 @@ import { Link, animateScroll as scroll } from "react-scroll";
 
 function Principal() {
 
+    //Productos
+    const [docus,setDocus] = React.useState([]);
+    React.useEffect(async ()=>{
+        const docusList = await app.firestore().collection("productos").get();
+        setDocus(docusList.docs.map((doc)=>doc.data()))
+    },[])
 
     //Header
 
@@ -87,44 +94,7 @@ function Principal() {
         console.log(mensaje)
     }
 
-    //Productos
-    const productos = [
-        {
-            name: "Primero",
-            descripcion: "haaaayyyy que bonito behjbcibcedjncde",
-            precio: 2300,
-            img: require("../../img/imagen.webp"),
-            categoria: "Vestido"
-        },
-        {
-            name: "segundo",
-            descripcion: "haafrferfreedjncde",
-            precio: 2300,
-            img: require("../../img/imagen2.webp"),
-            categoria: "Falda"
-        },
-        {
-            name: "tercero",
-            descripcion: "haaaayyyy que bonito bueno no tan bonitodjncde",
-            precio: 2300,
-            img: require("../../img/imagen3.webp"),
-            categoria: "Vestido"
-        },
-        {
-            name: "cuarto",
-            descripcion: "haaaayyyy que bonito behjbcibcedjncde",
-            precio: 2300,
-            img: require("../../img/imagen2.webp"),
-            categoria: "Otros"
-        },
-        {
-            name: "quinto",
-            descripcion: "haafrferfreedjncde",
-            precio: 2300,
-            img: require("../../img/imagen2.webp"),
-            categoria: "Otros"
-        }
-    ]
+    
     return (
         <>
             {/*Todo esto es el header*/}
@@ -289,23 +259,23 @@ function Principal() {
                 </Dropdown>
                 <div className={styles.cardsGrupo}>
                 {
-                    productos.map((coso, i) => {
-                        if (cat == "Todos" || cat == coso.categoria) {
+                    docus.map((doc) => {
+                        if (cat == "Todos" || cat == doc.categoria) {
                             return <Card style={{ width: '18rem' }, { marginLeft: '50%' }, { marginTop: '15px' }} className={styles.cardGrande}>
-                                <Card.Img variant="top" src={coso.img} />
+                                <Card.Img variant="top" src={doc.url} />
                                 <Card.Body>
-                                    <Card.Title>{coso.name}</Card.Title>
+                                    <Card.Title>{doc.nombre}</Card.Title>
                                     <Card.Text>
-                                        Descripción: {coso.descripcion}
+                                        Descripción: {doc.descripcion}
                                     </Card.Text>
                                     <Card.Text>
-                                        Precio: ${coso.precio}
+                                        Precio: ${doc.precio}
                                     </Card.Text>
                                     <Button variant="primary" onClick={
                                         () => {
-                                            setState(state => [...state, coso]);
-                                            setPrecio(precio + coso.precio);
-                                            setQuiere(quiere => [...quiere, coso.name]);
+                                            setState(state => [...state, doc]);
+                                            setPrecio(precio + Number(doc.precio));
+                                            setQuiere(quiere => [...quiere, doc.name]);
                                         }}>Agregar al Carrito</Button>
                                 </Card.Body>
                             </Card>
@@ -322,9 +292,9 @@ function Principal() {
                             state.map((coso, i) => {
 
                                 return <Card style={{ width: '18rem' }, { marginLeft: '50%' }, { marginTop: '15px' }}>
-                                    <Card.Img variant="top" src={coso.img} />
+                                    <Card.Img variant="top" src={coso.url} />
                                     <Card.Body>
-                                        <Card.Title>{coso.name}</Card.Title>
+                                        <Card.Title>{coso.nombre}</Card.Title>
                                         <Card.Text>
                                             Precio: ${coso.precio}
                                         </Card.Text>
