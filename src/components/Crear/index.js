@@ -19,9 +19,11 @@ function Crear(){
         const nombreArchivo = e.target.nombre.value;
         const categoriaArchivo = e.target.categoria.value;
         const descripcionArchivo = e.target.descripcion.value;
+        const coloresArchivo = e.target.colores.value;
+        const tallesArchivo = e.target.talles.value;
         const precioArchivo = e.target.precio.value;
         const coleccionRef = app.firestore().collection("productos");
-        const docu = await coleccionRef.doc(nombreArchivo.name).set({nombre: nombreArchivo, url:archivoUrl, precio:precioArchivo, descripcion:descripcionArchivo, categoria:categoriaArchivo});
+        const docu = await coleccionRef.doc(nombreArchivo.name).set({nombre: nombreArchivo, url:archivoUrl, precio:precioArchivo, descripcion:descripcionArchivo, colores:coloresArchivo, talles:tallesArchivo, categoria:categoriaArchivo});
         window.location="/solomelicrear"
     }
     React.useEffect(async ()=>{
@@ -36,11 +38,13 @@ function Crear(){
                 <input type="text" name="nombre" placeholder="Nombre del producto" />
                 <input type="text" name="categoria" placeholder="Categoria del producto" />
                 <input type="text" name="descripcion" placeholder="Descripcion del producto" />
+                <input type="text" name="colores" placeholder="Colores del producto" />
+                <input type="text" name="talles" placeholder="Talles del producto" />
                 <input type="number" name="precio" placeholder="Precio del producto" />
                 <button>Enviar</button>
             </form>
             <ul>
-                {docus.map((doc)=><li><img src={doc.url} height="100px" width="100px"/><h3>{doc.nombre}</h3></li>)}
+                {docus.map((doc)=><li><img src={doc.url} height="100px" width="100px"/><h3>{doc.nombre}</h3><h3>{doc.colores}</h3></li>)}
             </ul>
         </>
     );

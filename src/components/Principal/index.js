@@ -192,52 +192,39 @@ function Principal() {
                         return (<div className={styles.cate}><a className={styles.cateName} onClick={() => { paraVerCateg(); setCat(coso) }}>{coso}</a></div>);
                     })}
                 </div>
-                <h2 className={styles.titulo} id="sobre">Sobre Nosotros</h2>
+                <h2 className={styles.titulo} id="sobre">¿Qué es Noda?</h2>
 
-                <p className={styles.textoSobre} >Lorem ipsum es el texto que se usa habitualmente en diseño gráfico en demostraciones de tipografías o de borradores de diseño para probar el diseño visual antes de insertar el texto final.
-
-                    Aunque no posee actualmente fuentes para justificar sus hipótesis, el profesor de filología clásica Richard McClintock asegura que su uso se remonta a los impresores de comienzos del siglo xvi.1​ Su uso en algunos editores de texto muy conocidos en la actualidad ha dado al texto lorem ipsum nueva popularidad.
-
-                    El texto en sí no tiene sentido, aunque no es aleatorio, sino que deriva de un texto de Cicerón en lengua latina, a cuyas palabras se les han eliminado sílabas o letras. El significado del mismo no tiene importancia, ya que solo es una demostración o prueba. El texto procede de la obra De finibus bonorum et malorum (Sobre los límites del bien y del mal) que comienza con:</p>
-                <h2 className={styles.titulo} >Preguntas Frecuentes</h2>
+                <p className={styles.textoSobre} >Noda es una marca que nace en honor al nombre de mujeres de tres generaciones amantes de la vida, el diseño, los colores y el arte.
+                </p>
+                <p className={styles.textoSobre} >Noda es audaz y sofisticada, sin importar los estandares dfe la moda, sino creando un nuevo concepto.
+                </p>
+                <p className={styles.textoSobre} >Cada prenda es una pieza unica, fusionando lo tecnologico con lo artesanal, mezclando texturas, usos, detalles, primando la originalidad.
+                </p>
+                <p className={styles.textoSobre} >Recorre nuestro viaje virtual y sentite parte de <>NODA</>
+                </p>    
+                <h2 className={styles.titulo} >¿Tenes alguna duda?</h2>
                 <Accordion>
                     <Accordion.Item eventKey="0">
-                        <Accordion.Header >¿Funciona?</Accordion.Header>
+                        <Accordion.Header >¿Cómo comprar?</Accordion.Header>
                         <Accordion.Body>
-                            Si soy re bueno
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                            est laborum.
+                            1) Seleccionar modelo, talle y color para agregar al carrito.
+                            <br />2) Una vez en el carrito presionar el boton de finalizar compra, donde se pedira algunos datos para finalizar el proceso.
+                            <br />3) Al finalizar el paso anterior presionar el boton finalizar compra que te redireccionará a WhatsApp donde se pondra en contacto un asesor de ventas para elegir forma de pago y coordinar el envío. 
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="1" id="preguntas">
-                        <Accordion.Header>¿Era un error muy facil de cometer?</Accordion.Header>
+                        <Accordion.Header>¿Puedo realizar un cambio o devolución del producto?</Accordion.Header>
                         <Accordion.Body>
-                            No, soy re boludo
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                            est laborum.
+                            Se puede hacer unn cambio en un plazo de treinta(30) días corridos, contados a partir de la fecha de recepción del pedido. Los productos deben encontrarse en el mismo estado en el cual fueron recibidos, sin haber sido utilizados, lavados o alterados.
+                            <br /> Importante: No se realizan cambios de ropa interior, bikinis o accesorios.
+                            <br /> Las devoluciones se aceptan en un plazo de 73 horas hábiles de recibido el producto.
+                            <br /> Para continuar con la gestión comunicarse a atención al cliente noda@gmail.com o +5492614690078 (Lun/Vier de 10 A 21 hs, Sab de 10 a 14 hs) 
                         </Accordion.Body>
                     </Accordion.Item>
                     <Accordion.Item eventKey="2">
-                        <Accordion.Header>¿Soy un tonto?</Accordion.Header>
+                        <Accordion.Header>¿Cuál es el costo del envío?</Accordion.Header>
                         <Accordion.Body>
-                            Si Tima
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-                            est laborum.
+                            Es a cargo del cliente y dependiendo del correo elegido a retirar en sucursal o entrega a domicilio. Salvo en promociones comerciales por tiempo determinado sonde el envío sera a cargo de Noda.
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
