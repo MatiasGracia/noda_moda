@@ -115,6 +115,9 @@ body{
     margin: 15px 25px 15px 25px;
     text-align: center;
 }
+.botoncita{
+  margin-left: 30%;
+}
 .acordionItem{
     width: 90%;
     height: 60px;

@@ -228,6 +228,9 @@ function Principal() {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
+                <h2 className={styles.titulo}>Personal Shopper Online</h2>
+                <p className={styles.textoSobre}>Servicio de asesoramiento por videollamada. Te ayudamos con el armado de tu look y te mostramos las prendas de la coleccion que te sientan mejor!</p>
+                <Button className={styles.botoncita} variant="primary">Coordina tu cita</Button>{' '}
             </div> : null}
 
             {/*Todo esto es el lo categorias, se muestra o esto o lo principal segun funciones*/}
